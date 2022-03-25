@@ -1,4 +1,4 @@
-const int ledOutput = A1;// Initialize Pin11 for connecting LED
+const int ledOutput = 4;// Initialize Pin11 for connecting LED
 const int ldrInput = A0;// Initialize PIN A0 LDR PIN
 void setup() {
   Serial.begin(9600);
@@ -8,5 +8,6 @@ void setup() {
 void loop() {
 
   int ldrStatus = analogRead(ldrInput); // read LDR lignt intensity as analog value
-  analogWrite(ledOutput,ldrStatus);
+  analogWrite(ledOutput,map(ldrStatus,0,1023,0,255));
+  delay(100);
 }
